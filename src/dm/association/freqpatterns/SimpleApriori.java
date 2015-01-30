@@ -11,11 +11,6 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class SimpleApriori {
-//	public static void main(String[] args) {
-//		SimpleApriori ap = new SimpleApriori(args);
-//		ap.output();
-//	}
-
 	private String infileName;
 	private String outfileName;
 	private int minSup; // Used as absolute support. NOT relative support

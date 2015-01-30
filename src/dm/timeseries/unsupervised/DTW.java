@@ -38,6 +38,14 @@ public class DTW {
 			}
 		}
 		
+//		for(int row=0; row<n; row++) {
+//			for(int col = 0; col<m; col++) {
+//				System.out.print("\t" + d[row][col]);
+//			}
+//			System.out.println();
+//		}
+//		System.out.println();
+
 		D[0][0] = d[0][0];
 		
 		for (int i = 1; i < n; i++) {
@@ -63,6 +71,7 @@ public class DTW {
 			}
 			System.out.println();
 		}
+		System.out.println();
 		
 		cost = D[n - 1][m - 1];
 
@@ -111,7 +120,7 @@ public class DTW {
 	}
 	
 	private double distanceBetween(double p1, double p2) {
-		return (p1 - p2) * (p1 - p2);
+		return Math.sqrt(Math.pow(p1 - p2, 2));
 	}
 
 	private int getIndexOfMinimum(double[] array) {

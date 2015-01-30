@@ -34,13 +34,18 @@ public class DTWwindowed {
 		
 		double[][] d = new double[n][m];	// local distances
 		double[][] D = new double[n][m];	// global distances
-//		DecimalFormat mf = new DecimalFormat("0.00");
 		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				d[i][j] = distanceBetween(refSeq[i], testSeq[j]);
 			}
 		}
+//		for(int row=0; row<n; row++) {
+//			for(int col = 0; col<m; col++) {
+//				System.out.print("\t" + d[row][col]);
+//			}
+//			System.out.println();
+//		}
 		
 		D[0][0] = d[0][0];
 		
@@ -50,14 +55,6 @@ public class DTWwindowed {
 			}
 		}
 
-//		for(int row=0; row<n; row++) {
-//			for(int col = 0; col<m; col++) {
-//				System.out.print("\t" + mf.format(D[row][col]));
-//			}
-//			System.out.println();
-//		}
-//		System.out.println();System.out.println();System.out.println();
-		
 		for (int i = 1; i < n; i++) {
 			for (int j = Math.max(1, i-window); j < Math.min(m, i+window); j++) {
 				D[i][j] = d[i][j] + Math.min(Math.min(D[i-1][j], D[i-1][j-1]), D[i][j-1]);
@@ -66,13 +63,14 @@ public class DTWwindowed {
 			}
 		}
 		
-//		for(int row=0; row<n; row++) {
-//			for(int col = 0; col<m; col++) {
-//				System.out.print("\t" + mf.format(D[row][col]));
-//			}
-//			System.out.println();
-//		}
-//		System.out.println();System.out.println();System.out.println();
+		for(int row=0; row<n; row++) {
+			for(int col = 0; col<m; col++) {
+				System.out.print("\t" + D[row][col]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
 
 		cost = D[n - 1][m - 1];
 
@@ -121,7 +119,7 @@ public class DTWwindowed {
 	}
 	
 	private double distanceBetween(double p1, double p2) {
-		return (p1 - p2) * (p1 - p2);
+		return Math.sqrt(Math.pow(p1 - p2, 2));
 	}
 
 	private int getIndexOfMinimum(double[] array) {
