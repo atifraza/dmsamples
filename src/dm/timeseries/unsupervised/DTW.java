@@ -37,14 +37,17 @@ public class DTW {
 				d[i][j] = distanceBetween(refSeq[i], testSeq[j]);
 			}
 		}
-		
-//		for(int row=0; row<n; row++) {
-//			for(int col = 0; col<m; col++) {
-//				System.out.print("\t" + d[row][col]);
-//			}
-//			System.out.println();
-//		}
-//		System.out.println();
+		for(int i=0; i<testSeq.length; i++)
+			System.out.print("\t" + testSeq[i]);
+		System.out.println();
+		for(int row=0; row<n; row++) {
+			System.out.print(refSeq[row]);
+			for(int col = 0; col<m; col++) {
+				System.out.print("\t" + d[row][col]);
+			}
+			System.out.println();
+		}
+		System.out.println();
 
 		D[0][0] = d[0][0];
 		
